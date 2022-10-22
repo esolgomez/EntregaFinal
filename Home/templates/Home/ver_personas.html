@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+
+{% block mi_contenido %}
+<a class="navbar-brand" href={% url 'Home' %}>Home</a>  
+<p>Listado de personas:</p>
+{% for persona in personas %}
+    <li>{{persona.nombre}} {{persona.apellido}} {{persona.edad}}</li>
+{% endfor %}
+{% endblock mi_contenido %}
+
+
