@@ -11,11 +11,23 @@ Ver personas
 
 
 {% block index_contenido %}
-<a class="navbar-brand" href={% url 'Home' %}>Home</a>  
+<a class="navbar-brand" href={% url 'crear_persona' %}>Crear Persona</a>  
 <p>Listado de personas:</p>
-{% for persona in personas %}
-    <li>{{persona.nombre}} {{persona.apellido}} {{persona.edad}}</li>
-{% endfor %}
+
+<form action={% url 'ver_personas' %} method="GET">
+    {{formulario}}
+    <button>Buscar</button>
+</form>
+<p>
+    {% if personas %}
+        {% for persona in personas %}
+            <li>{{persona.nombre}} {{persona.apellido}} {{persona.edad}}</li>
+        {% endfor %}
+    {% else %}
+        <p>No se encontraron resultados para la búsqueda.</p>
+    {% endif %}
+
+</p>
 {% endblock index_contenido %}
 
 
